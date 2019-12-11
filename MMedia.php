@@ -5,7 +5,7 @@
  */
 /*
 Plugin Name: M Media
-Plugin URI: https://github.com/M-Media-Group/mmedia-wp-plugin
+Plugin URI: https://mmediagroup.fr/
 Description: Required M Media plugin.
 Author: M Media
 Version: 1.1
