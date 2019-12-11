@@ -4,7 +4,7 @@ Plugin Name: M Media
 Plugin URI: https://mmediagroup.fr/
 Description: Required M Media plugin.
 Author: M Media
-Version: 1.3.4
+Version: 1.3.5
 Author URI: https://mmediagroup.fr/
 License: GPL2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -95,6 +95,12 @@ function mmedia_settings_page()
         <h3><?php _e('Start ranking higher on Google', 'mmedia-plugin');?></h3>
         <p>We optimize your website and train you on best SEO practices.</p>
         <a class="button button-mmedia" href="https://mmediagroup.fr/contact?utm_source=wordpress&utm_medium=plugin&utm_campaign=<?php echo (get_site_url()); ?>&utm_content=tab_google">Get in touch</a>
+    </div>
+    <div class="card">
+        <h3><?php _e('M Media tools', 'mmedia-plugin');?></h3>
+        <p>Tools available on the M Media website to customers.</p>
+        <a class="button" href="https://mmediagroup.fr/tools/website-debugger/<?php echo parse_url(get_site_url())['host']; ?>?utm_source=wordpress&utm_medium=plugin&utm_campaign=<?php echo (get_site_url()); ?>&utm_content=tab" target="_BLANK">Website analyzer</a>
+        <a class="button" href="https://mmediagroup.fr/tools/instagram-account-analyzer?utm_source=wordpress&utm_medium=plugin&utm_campaign=<?php echo (get_site_url()); ?>&utm_content=tab" target="_BLANK">Instagram account analyzer</a>
     </div>
     <div class="card">
         <h3><?php _e('Useful links', 'mmedia-plugin');?></h3>
