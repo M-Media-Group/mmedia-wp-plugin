@@ -78,22 +78,27 @@ function mmedia_settings_page()
 {
     ?>
 <div class="wrap">
-	<h2>M Media on <?php _e('WordPress', 'mmedia-plugin');?></h2>
-    <div class="card align-center-mmedia" style="text-align: center;">
-        <a href="#"><img src="<?php echo plugins_url('images/m.svg', __FILE__); ?>" height="75"></a>
-        <p>We make websites and handle your marketing.</p>
+    <div class="card align-center-mmedia" style="text-align: center;padding-top:15px;">
+        <img src="<?php echo plugins_url('images/m.svg', __FILE__); ?>" height="75">
+        <p style="font-weight: 500;">We make websites and handle your marketing.</p>
     </div>
     <div class="card align-center-mmedia">
         <img src="<?php echo plugins_url('images/laptop-and-person.svg', __FILE__); ?>" height="145">
         <h3><?php _e('Get website help', 'mmedia-plugin');?></h3>
-        <p>Support is always here to help! Just get in touch with us.</p>
-        <a class="button button-mmedia" href="https://mmediagroup.fr?utm_source=wordpress&utm_medium=plugin&utm_campaign=<?php echo (get_site_url()); ?>&utm_content=tab">Contact us</a>
+        <p>We're is always here to help! Just get in touch with us.</p>
+        <a class="button button-mmedia" href="https://mmediagroup.fr/contact?utm_source=wordpress&utm_medium=plugin&utm_campaign=<?php echo (get_site_url()); ?>&utm_content=tab_help">Contact us</a>
     </div>
     <div class="card align-center-mmedia">
         <img src="<?php echo plugins_url('images/instagram-like.png', __FILE__); ?>" height="145">
         <h3><?php _e('Create a Facebook and Instagram ad', 'mmedia-plugin');?></h3>
         <p>We're experts in creating dynamic retargeting ads on Facebook.</p>
-        <a class="button button-mmedia" href="https://mmediagroup.fr?utm_source=wordpress&utm_medium=plugin&utm_campaign=<?php echo (get_site_url()); ?>&utm_content=tab">Commission a Facebook ad</a>
+        <a class="button button-mmedia" href="https://mmediagroup.fr/contact?utm_source=wordpress&utm_medium=plugin&utm_campaign=<?php echo (get_site_url()); ?>&utm_content=tab_ads">Commission an ad</a>
+    </div>
+    <div class="card align-center-mmedia">
+        <img src="<?php echo plugins_url('images/seo.svg', __FILE__); ?>" height="145">
+        <h3><?php _e('Start ranking higher on Google', 'mmedia-plugin');?></h3>
+        <p>We optimize your website and train you on best SEO practices.</p>
+        <a class="button button-mmedia" href="https://mmediagroup.fr/contact?utm_source=wordpress&utm_medium=plugin&utm_campaign=<?php echo (get_site_url()); ?>&utm_content=tab">Get in touch</a>
     </div>
     <div class="card">
         <h3><?php _e('Useful links', 'mmedia-plugin');?></h3>
