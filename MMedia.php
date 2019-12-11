@@ -4,7 +4,7 @@ Plugin Name: M Media
 Plugin URI: https://mmediagroup.fr/
 Description: Required M Media plugin.
 Author: M Media
-Version: 1.3.3
+Version: 1.3.4
 Author URI: https://mmediagroup.fr/
 License: GPL2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -81,7 +81,7 @@ function mmedia_settings_page()
     <div class="card align-center-mmedia">
         <img src="<?php echo plugins_url('images/laptop-and-person.svg', __FILE__); ?>" height="145">
         <h3><?php _e('Get website help', 'mmedia-plugin');?></h3>
-        <p>We're is always here to help! Just get in touch with us.</p>
+        <p>M Media is always here to help! Just get in touch with us.</p>
         <a class="button button-mmedia" href="https://mmediagroup.fr/contact?utm_source=wordpress&utm_medium=plugin&utm_campaign=<?php echo (get_site_url()); ?>&utm_content=tab_help">Contact us</a>
     </div>
     <div class="card align-center-mmedia">
