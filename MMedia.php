@@ -32,8 +32,8 @@ if (!class_exists('Smashing_Updater')) {
     include_once plugin_dir_path(__FILE__) . 'updater.php';
 }
 $updater = new Smashing_Updater(__FILE__);
-$updater->set_username('rayman813');
-$updater->set_repository('smashing-updater-plugin');
+$updater->set_username('M-Media-Group');
+$updater->set_repository('mmedia-wp-plugin');
 /*
 $updater->authorize( 'abcdefghijk1234567890' ); // Your auth code goes here for private repos
  */
