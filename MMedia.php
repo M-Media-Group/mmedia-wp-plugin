@@ -98,7 +98,7 @@ function mmedia_settings_page()
         <img src="<?php echo plugins_url('images/seo.svg', __FILE__); ?>" height="145">
         <h3><?php _e('Start ranking higher on Google', 'mmedia-plugin');?></h3>
         <p>We optimize your website and train you on best SEO practices.</p>
-        <a class="button button-mmedia" href="https://mmediagroup.fr/contact?utm_source=wordpress&utm_medium=plugin&utm_campaign=<?php echo (get_site_url()); ?>&utm_content=tab">Get in touch</a>
+        <a class="button button-mmedia" href="https://mmediagroup.fr/contact?utm_source=wordpress&utm_medium=plugin&utm_campaign=<?php echo (get_site_url()); ?>&utm_content=tab_google">Get in touch</a>
     </div>
     <div class="card">
         <h3><?php _e('Useful links', 'mmedia-plugin');?></h3>
