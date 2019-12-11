@@ -5,10 +5,10 @@
  */
 /*
 Plugin Name: M Media
-Plugin URI: http://wordpress.org/plugins/hello-dolly/
-Description: Required M Media plugin
+Plugin URI: https://github.com/M-Media-Group/mmedia-wp-plugin
+Description: Required M Media plugin.
 Author: M Media
-Version: 1.0
+Version: 1.0.1
 Author URI: https://mmediagroup.fr/
 License: GPL2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
