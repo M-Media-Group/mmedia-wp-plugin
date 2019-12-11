@@ -148,9 +148,9 @@ function mmedia_remove_toolbar_nodes($wp_admin_bar)
     $wp_admin_bar->add_node([
         'id' => 'mmedia',
         'title' => 'M Media',
-        'href' => 'https://mmediagroup.fr?utm_source=wordpress&utm_medium=plugin&utm_campaign=' . get_site_url() . '&utm_content=admin_bar',
+        'href' => '/wp-admin/admin.php?page=mmedia_main_menu',
         'meta' => [
-            'target' => '_BLANK',
+            //'target' => '_BLANK',
         ],
     ]);
 
