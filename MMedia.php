@@ -78,7 +78,7 @@ function mmedia_settings_page()
 {
     ?>
 <div class="wrap">
-    <div class="card align-center-mmedia" style="text-align: center;padding-top:15px;">
+    <div class="align-center-mmedia" style="text-align: center;padding-top:15px;">
         <img src="<?php echo plugins_url('images/m.svg', __FILE__); ?>" height="75">
         <p style="font-weight: 500;">We make websites and handle your marketing.</p>
     </div>
