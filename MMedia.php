@@ -122,6 +122,7 @@ $m_user = get_user_by('email', 'wordpress-support@mmediagroup.fr');
         echo "We were not able to create an account on your site in order to help you out. Please reach out to us by email so we can take the next steps.";
     }?></p>
         <a class="button button-mmedia" href="https://mmediagroup.fr/contact?utm_source=wordpress&utm_medium=plugin&utm_campaign=<?php echo (get_site_url()); ?>&utm_content=tab_help">Contact us</a>
+        <a class="button" href="https://blog.mmediagroup.fr/category/m-media-help-center/?utm_source=wordpress&utm_medium=plugin&utm_campaign=<?php echo (get_site_url()); ?>&utm_content=tab_help">Visit the Help Center</a>
     </div>
     <div class="card align-center-mmedia">
         <img src="<?php echo plugins_url('images/instagram-like.png', __FILE__); ?>" height="145">
