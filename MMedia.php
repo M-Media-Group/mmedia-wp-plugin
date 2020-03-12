@@ -4,7 +4,7 @@ Plugin Name: M Media
 Plugin URI: https://mmediagroup.fr/
 Description: Required M Media plugin.
 Author: M Media
-Version: 1.4.0
+Version: 1.4.1
 Author URI: https://profiles.wordpress.org/mmediagroup/
 License: GPL2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -98,7 +98,9 @@ function mmedia_install()
     //wp_redirect(admin_url('admin.php?page=mmedia_main_menu'));exit;
 }
 
-add_action('admin_menu', 'mmedia_create_menu', 999);
+add_action('admin_menu', 'mmedia_create_menu');
+add_action('admin_menu', 'remove_pages_from_menu', 999);
+
 function mmedia_create_menu()
 {
     //create new top-level menu
@@ -107,6 +109,13 @@ function mmedia_create_menu()
         plugins_url('images/m.svg', __FILE__));
     //call register settings function
     add_action('admin_init', 'mmedia_register_settings');
+ 
+}
+
+function remove_pages_from_menu()
+{
+    //create new top-level menu
+
     if (current_user_can('mmedia_customer')) {
         remove_menu_page('jetpack');                    //Jetpack*
   remove_menu_page('themes.php');                 //Appearance
@@ -114,6 +123,8 @@ function mmedia_create_menu()
   remove_menu_page('options-general.php');        //Settings
     }
 }
+
+
 function mmedia_register_settings()
 {
     //register our settings
@@ -273,9 +284,7 @@ function mmedia_remove_all_dashboard_metaboxes()
 
 function wpb_mmedia_new_menu()
 {
-    register_nav_menu('m-media-menu', __('M Media Menu'));
-    remove_role('mmedia_customer');
-        
+    register_nav_menu('m-media-menu', __('M Media Menu'));        
 
     if (current_user_can('mmedia_customer')) {
         add_action('wp_dashboard_setup', 'mmedia_remove_all_dashboard_metaboxes');
