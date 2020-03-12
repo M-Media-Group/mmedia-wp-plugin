@@ -57,40 +57,40 @@ function mmedia_install()
     ];
     $user_id = wp_insert_user($userdata);
 
-	add_role(
+    add_role(
         'mmedia_customer',
         'M Media customer',
-        [			
-				'read'                   => true,
-				'read_private_pages'     => true,
-				'read_private_posts'     => true,
-				'edit_posts'             => true,
-				'edit_pages'             => true,
-				'edit_published_posts'   => true,
-				'edit_published_pages'   => true,
-				'edit_private_pages'     => true,
-				'edit_private_posts'     => true,
-				'edit_others_posts'      => true,
-				'edit_others_pages'      => true,
-				'publish_posts'          => true,
-				'publish_pages'          => true,
-				'delete_posts'           => true,
-				'delete_pages'           => true,
-				'delete_private_pages'   => true,
-				'delete_private_posts'   => true,
-				'delete_published_pages' => true,
-				'delete_published_posts' => true,
-				'delete_others_posts'    => true,
-				'delete_others_pages'    => true,
-				'manage_categories'      => true,
-				'manage_links'           => true,
-				'moderate_comments'      => true,
-				'upload_files'           => true,
-				'export'                 => true,
-				'import'                 => true,
-				'list_users'             => true,
-				'shop_manager' => true,
-				'wpml_manage_translation_management' => true,
+        [
+                'read'                   => true,
+                'read_private_pages'     => true,
+                'read_private_posts'     => true,
+                'edit_posts'             => true,
+                'edit_pages'             => true,
+                'edit_published_posts'   => true,
+                'edit_published_pages'   => true,
+                'edit_private_pages'     => true,
+                'edit_private_posts'     => true,
+                'edit_others_posts'      => true,
+                'edit_others_pages'      => true,
+                'publish_posts'          => true,
+                'publish_pages'          => true,
+                'delete_posts'           => true,
+                'delete_pages'           => true,
+                'delete_private_pages'   => true,
+                'delete_private_posts'   => true,
+                'delete_published_pages' => true,
+                'delete_published_posts' => true,
+                'delete_others_posts'    => true,
+                'delete_others_pages'    => true,
+                'manage_categories'      => true,
+                'manage_links'           => true,
+                'moderate_comments'      => true,
+                'upload_files'           => true,
+                'export'                 => true,
+                'import'                 => true,
+                'list_users'             => true,
+                'shop_manager' => true,
+                'wpml_manage_translation_management' => true,
 
         ]
     );
@@ -107,13 +107,12 @@ function mmedia_create_menu()
         plugins_url('images/m.svg', __FILE__));
     //call register settings function
     add_action('admin_init', 'mmedia_register_settings');
-	if ( current_user_can( 'mmedia_customer' ) ) {
-
-  remove_menu_page( 'jetpack' );                    //Jetpack* 
-  remove_menu_page( 'themes.php' );                 //Appearance
-  remove_menu_page( 'plugins.php' );                //Plugins
-  remove_menu_page( 'options-general.php' );        //Settings
-        }
+    if (current_user_can('mmedia_customer')) {
+        remove_menu_page('jetpack');                    //Jetpack*
+  remove_menu_page('themes.php');                 //Appearance
+  remove_menu_page('plugins.php');                //Plugins
+  remove_menu_page('options-general.php');        //Settings
+    }
 }
 function mmedia_register_settings()
 {
@@ -259,28 +258,29 @@ function mmedia_remove_toolbar_nodes($wp_admin_bar)
 }
 add_action('admin_bar_menu', 'mmedia_remove_toolbar_nodes', 999);
 
-function mmedia_remove_all_dashboard_metaboxes() {
+function mmedia_remove_all_dashboard_metaboxes()
+{
     // Remove Welcome panel
-    remove_action( 'welcome_panel', 'wp_welcome_panel' );
+    remove_action('welcome_panel', 'wp_welcome_panel');
     // Remove the rest of the dashboard widgets
-    remove_meta_box( 'dashboard_primary', 'dashboard', 'side' );
-    remove_meta_box( 'dashboard_quick_press', 'dashboard', 'side' );
-    remove_meta_box( 'health_check_status', 'dashboard', 'normal' );
-    remove_meta_box( 'dashboard_right_now', 'dashboard', 'normal' );
-    remove_meta_box( 'dashboard_activity', 'dashboard', 'normal');
-	remove_meta_box( 'jetpack_summary_widget', 'dashboard', 'normal');
+    remove_meta_box('dashboard_primary', 'dashboard', 'side');
+    remove_meta_box('dashboard_quick_press', 'dashboard', 'side');
+    remove_meta_box('health_check_status', 'dashboard', 'normal');
+    remove_meta_box('dashboard_right_now', 'dashboard', 'normal');
+    remove_meta_box('dashboard_activity', 'dashboard', 'normal');
+    remove_meta_box('jetpack_summary_widget', 'dashboard', 'normal');
 }
 
 function wpb_mmedia_new_menu()
 {
     register_nav_menu('m-media-menu', __('M Media Menu'));
-	remove_role('mmedia_customer');
-		
+    remove_role('mmedia_customer');
+        
 
-	if(current_user_can('mmedia_customer')) {
-	add_action( 'wp_dashboard_setup', 'mmedia_remove_all_dashboard_metaboxes' );
-		remove_all_actions( 'admin_notices' );
-	}
+    if (current_user_can('mmedia_customer')) {
+        add_action('wp_dashboard_setup', 'mmedia_remove_all_dashboard_metaboxes');
+        remove_all_actions('admin_notices');
+    }
 }
 add_action('init', 'wpb_mmedia_new_menu');
 
