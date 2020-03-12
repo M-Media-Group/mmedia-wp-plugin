@@ -90,7 +90,7 @@ function mmedia_install()
                 'import'                 => true,
                 'list_users'             => true,
                 'manage_woocommerce' => true,
-		'view_woocommerce_reports' => true,
+        'view_woocommerce_reports' => true,
                 'wpml_manage_translation_management' => true,
 
         ]
@@ -102,7 +102,7 @@ function mmedia_install()
 register_deactivation_hook(__FILE__, 'mmedia_uninstall');
 function mmedia_uninstall()
 {
-	remove_role('mmedia_customer');
+    remove_role('mmedia_customer');
 }
 
 add_action('admin_menu', 'mmedia_create_menu');
