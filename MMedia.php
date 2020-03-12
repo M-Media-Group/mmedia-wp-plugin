@@ -89,13 +89,20 @@ function mmedia_install()
                 'export'                 => true,
                 'import'                 => true,
                 'list_users'             => true,
-                'shop_manager' => true,
+                'manage_woocommerce' => true,
+		'view_woocommerce_reports' => true,
                 'wpml_manage_translation_management' => true,
 
         ]
     );
 
     //wp_redirect(admin_url('admin.php?page=mmedia_main_menu'));exit;
+}
+
+register_deactivation_hook(__FILE__, 'mmedia_uninstall');
+function mmedia_uninstall()
+{
+	remove_role('mmedia_customer');
 }
 
 add_action('admin_menu', 'mmedia_create_menu');
