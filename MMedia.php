@@ -36,7 +36,7 @@ class M_Media
      * Static property to hold our singleton instance
      *
      */
-    static $instance = false;
+    public static $instance = false;
 
     /**
      * This is our constructor
@@ -225,7 +225,6 @@ class M_Media
 
     public function textdomain()
     {
-
         load_plugin_textdomain('mmedia', false, dirname(plugin_basename(__FILE__)) . '/languages/');
 
         // Check for new updates
@@ -246,9 +245,7 @@ class M_Media
 
     public function admin_scripts()
     {
-
         wp_enqueue_style('custom_wp_admin_css', plugins_url('css/admin-style.css', __FILE__), array(), MMEDIA_VER, 'all');
-
     }
 
     /**
@@ -259,9 +256,7 @@ class M_Media
 
     public function create_metaboxes($context)
     {
-
         add_meta_box('mmedia_help_widget', 'M Media Support', array($this, 'custom_dashboard_help'), 'dashboard', 'normal', 'high');
-
     }
 
     /**
@@ -272,16 +267,14 @@ class M_Media
 
     public function custom_dashboard_help($post)
     {
-
         echo '<div style="text-align: center;"><img style="margin:0 auto;" src="' . plugins_url('images/m.svg', __FILE__) . '" height="45"><p>M Media is always here and ready to help you with your WordPress website. Not sure about something? Just ask!</p><a class="button button-mmedia" href="https://mmediagroup.fr/contact?utm_source=wordpress&utm_medium=plugin&utm_campaign=' . get_site_url() . '&utm_content=dashboard">Contact us</a> <a class="button" href="/wp-admin/admin.php?page=mmedia_main_menu">More info</a></div>';
-
     }
 
-/**
- * load textdomain
- *
- * @return void
- */
+    /**
+     * load textdomain
+     *
+     * @return void
+     */
 
     public function mmedia_create_menu()
     {
@@ -330,7 +323,7 @@ class M_Media
         <p>Set the user '<a href='/wp-admin/user-edit.php?user_id= <?php echo $m_user->id; ?>#role'>mmedia</a>' to have the 'Administrator' role so M Media can correctly work on your website.</p>
     </div>
 <?php
-}
+        }
     }
 
     /**
@@ -369,11 +362,11 @@ class M_Media
         }
     }
 
-/**
- * load textdomain
- *
- * @return void
- */
+    /**
+     * load textdomain
+     *
+     * @return void
+     */
 
     public function mmedia_remove_toolbar_nodes($wp_admin_bar)
     {
@@ -391,22 +384,22 @@ class M_Media
         ]);
     }
 
-/**
- * load textdomain
- *
- * @return void
- */
+    /**
+     * load textdomain
+     *
+     * @return void
+     */
 
     public function wpb_mmedia_new_menu()
     {
         register_nav_menu('m-media-menu', __('M Media Menu'));
     }
 
-/**
- * load textdomain
- *
- * @return void
- */
+    /**
+     * load textdomain
+     *
+     * @return void
+     */
 
     public function mmedia_register_settings()
     {
@@ -415,11 +408,11 @@ class M_Media
             'mmedia_options', 'mmedia_sanitize_options');
     }
 
-/**
- * load textdomain
- *
- * @return void
- */
+    /**
+     * load textdomain
+     *
+     * @return void
+     */
 
     public function remove_footer_admin()
     {
@@ -442,7 +435,7 @@ class M_Media
     {
         $url = 'https://blog.mmediagroup.fr/wp-json/wp/v2/categories?parent=34';
         $response = wp_remote_get($url);
-        $body = json_decode($response['body']);?>
+        $body = json_decode($response['body']); ?>
 <div class="wrap">
     <div class="align-center-mmedia" style="text-align: center;padding-top:15px;">
         <img src="<?php echo plugins_url('images/m.svg', __FILE__); ?>" height="75">
@@ -450,7 +443,7 @@ class M_Media
     </div>
     <div class="card align-center-mmedia">
         <img src="<?php echo plugins_url('images/laptop-and-person.svg', __FILE__); ?>" height="145">
-        <h3><?php _e('Get website help', 'mmedia-plugin');?></h3>
+        <h3><?php _e('Get website help', 'mmedia-plugin'); ?></h3>
         <p>
             <?php
 $m_user = get_user_by('email', 'wordpress-support@mmediagroup.fr');
@@ -461,40 +454,40 @@ $m_user = get_user_by('email', 'wordpress-support@mmediagroup.fr');
             echo "Please make sure the user '<a href='/wp-admin/user-edit.php?user_id=" . $m_user->id . "#role'>mmedia</a>' has the 'Administrator' role so we can correctly work on your website.";
         } else {
             echo 'We were not able to create an account on your site in order to help you out. Please reach out to us by email so we can take the next steps.';
-        }?></p>
+        } ?></p>
         <a class="button button-mmedia" href="https://mmediagroup.fr/contact?utm_source=wordpress&utm_medium=plugin&utm_campaign=<?php echo get_site_url(); ?>&utm_content=tab_help">Contact us</a>
         <a class="button" href="https://blog.mmediagroup.fr/category/m-media-help-center/?utm_source=wordpress&utm_medium=plugin&utm_campaign=<?php echo get_site_url(); ?>&utm_content=tab_help">Visit the Help Center</a>
     </div>
 		<div class="card">
-        <h3><?php _e('Help Center topics', 'mmedia-plugin');?></h3>
+        <h3><?php _e('Help Center topics', 'mmedia-plugin'); ?></h3>
         <p>Get answers and help to common questions regarding your business with M Media.</p>
 					<?php
 foreach ($body as $val) {
             ?>
 		<a class="button" href="<?php echo $val->link; ?>?utm_source=wordpress&utm_medium=plugin&utm_campaign=<?php echo get_site_url(); ?>&utm_content=tab" target="_BLANK"><?php echo $val->name; ?></a>
 		<?php
-}?>
+        } ?>
     </div>
     <div class="card align-center-mmedia">
         <img src="<?php echo plugins_url('images/instagram-like.png', __FILE__); ?>" height="145">
-        <h3><?php _e('Create a Facebook and Instagram ad', 'mmedia-plugin');?></h3>
+        <h3><?php _e('Create a Facebook and Instagram ad', 'mmedia-plugin'); ?></h3>
         <p>We're experts in creating dynamic re-targeting ads on Facebook.</p>
         <a class="button button-mmedia" href="https://mmediagroup.fr/contact?utm_source=wordpress&utm_medium=plugin&utm_campaign=<?php echo get_site_url(); ?>&utm_content=tab_ads">Commission an ad</a>
     </div>
     <div class="card align-center-mmedia">
         <img src="<?php echo plugins_url('images/seo.svg', __FILE__); ?>" height="145">
-        <h3><?php _e('Start ranking higher on Google', 'mmedia-plugin');?></h3>
+        <h3><?php _e('Start ranking higher on Google', 'mmedia-plugin'); ?></h3>
         <p>We optimize your website and train you on best SEO practices.</p>
         <a class="button button-mmedia" href="https://mmediagroup.fr/contact?utm_source=wordpress&utm_medium=plugin&utm_campaign=<?php echo get_site_url(); ?>&utm_content=tab_google">Get in touch</a>
     </div>
     <div class="card">
-        <h3><?php _e('M Media tools', 'mmedia-plugin');?></h3>
+        <h3><?php _e('M Media tools', 'mmedia-plugin'); ?></h3>
         <p>Tools available on the M Media website to customers.</p>
         <a class="button" href="https://mmediagroup.fr/tools/website-debugger/<?php echo parse_url(get_site_url())['host']; ?>?utm_source=wordpress&utm_medium=plugin&utm_campaign=<?php echo get_site_url(); ?>&utm_content=tab" target="_BLANK">Website analyzer</a>
         <a class="button" href="https://mmediagroup.fr/tools/instagram-account-analyzer?utm_source=wordpress&utm_medium=plugin&utm_campaign=<?php echo get_site_url(); ?>&utm_content=tab" target="_BLANK">Instagram account analyzer</a>
     </div>
     <div class="card">
-        <h3><?php _e('Useful links', 'mmedia-plugin');?></h3>
+        <h3><?php _e('Useful links', 'mmedia-plugin'); ?></h3>
         <p>Get information quickly on the M Media website.</p>
         <a class="button" href="https://mmediagroup.fr/web-development?utm_source=wordpress&utm_medium=plugin&utm_campaign=<?php echo get_site_url(); ?>&utm_content=tab" target="_BLANK">Website development info</a>
         <a class="button" href="https://mmediagroup.fr/pricing?utm_source=wordpress&utm_medium=plugin&utm_campaign=<?php echo get_site_url(); ?>&utm_content=tab" target="_BLANK">Pricing</a>
@@ -502,9 +495,9 @@ foreach ($body as $val) {
     </div>
 </div>
 <?php
-}
+    }
 
-/// end class
+    /// end class
 }
 
 // Instantiate our class
