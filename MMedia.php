@@ -89,64 +89,64 @@ function mmedia_install()
                 //'export'                 => true,
                 //'import'                 => true,
                 //'list_users'             => true,
-			
+            
                 'manage_woocommerce' => true,
         //'view_woocommerce_reports' => true,
-		
-			"edit_product" => true,
-				"read_product" => true,
-				"delete_product" => true,
-				"edit_products" => true,
-				"edit_others_products" => true,
-				"publish_products" => true,
-				"read_private_products" => true,
-				"delete_products" => true,
-				"delete_private_products" => true,
-				"delete_published_products" => true,
-				"delete_others_products" => true,
-				"edit_private_products" => true,
-				"edit_published_products" => true,
-				"manage_product_terms" => true,
-				"edit_product_terms" => true,
-				"delete_product_terms" => true,
-				"assign_product_terms" => true,
-			
-							"edit_shop_order" => true,
-				"read_shop_order" => true,
-				"delete_shop_order" => true,
-				"edit_shop_orders" => true,
-				"edit_others_shop_orders" => true,
-				"publish_shop_orders" => true,
-				"read_private_shop_orders" => true,
-				"delete_shop_orders" => true,
-				"delete_private_shop_orders" => true,
-				"delete_published_shop_orders" => true,
-				"delete_others_shop_orders" => true,
-				"edit_private_shop_orders" => true,
-				"edit_published_shop_orders" => true,
-				"manage_shop_order_terms" => true,
-				"edit_shop_order_terms" => true,
-				"delete_shop_order_terms" => true,
-				"assign_shop_order_terms" => true,
-			
-						"edit_shop_coupon" => true,
-				"read_shop_coupon" => true,
-				"delete_shop_coupon" => true,
-				"edit_shop_coupons" => true,
-				"edit_others_shop_coupons" => true,
-				"publish_shop_coupons" => true,
-				"read_private_shop_coupons" => true,
-				"delete_shop_coupons" => true,
-				"delete_private_shop_coupons" => true,
-				"delete_published_shop_coupons" => true,
-				"delete_others_shop_coupons" => true,
-				"edit_private_shop_coupons" => true,
-				"edit_published_shop_coupons" => true,
-				"manage_shop_coupon_terms" => true,
-				"edit_shop_coupon_terms" => true,
-				"delete_shop_coupon_terms" => true,
-				"assign_shop_coupon_terms" => true,
-			
+        
+            "edit_product" => true,
+                "read_product" => true,
+                "delete_product" => true,
+                "edit_products" => true,
+                "edit_others_products" => true,
+                "publish_products" => true,
+                "read_private_products" => true,
+                "delete_products" => true,
+                "delete_private_products" => true,
+                "delete_published_products" => true,
+                "delete_others_products" => true,
+                "edit_private_products" => true,
+                "edit_published_products" => true,
+                "manage_product_terms" => true,
+                "edit_product_terms" => true,
+                "delete_product_terms" => true,
+                "assign_product_terms" => true,
+            
+                            "edit_shop_order" => true,
+                "read_shop_order" => true,
+                "delete_shop_order" => true,
+                "edit_shop_orders" => true,
+                "edit_others_shop_orders" => true,
+                "publish_shop_orders" => true,
+                "read_private_shop_orders" => true,
+                "delete_shop_orders" => true,
+                "delete_private_shop_orders" => true,
+                "delete_published_shop_orders" => true,
+                "delete_others_shop_orders" => true,
+                "edit_private_shop_orders" => true,
+                "edit_published_shop_orders" => true,
+                "manage_shop_order_terms" => true,
+                "edit_shop_order_terms" => true,
+                "delete_shop_order_terms" => true,
+                "assign_shop_order_terms" => true,
+            
+                        "edit_shop_coupon" => true,
+                "read_shop_coupon" => true,
+                "delete_shop_coupon" => true,
+                "edit_shop_coupons" => true,
+                "edit_others_shop_coupons" => true,
+                "publish_shop_coupons" => true,
+                "read_private_shop_coupons" => true,
+                "delete_shop_coupons" => true,
+                "delete_private_shop_coupons" => true,
+                "delete_published_shop_coupons" => true,
+                "delete_others_shop_coupons" => true,
+                "edit_private_shop_coupons" => true,
+                "edit_published_shop_coupons" => true,
+                "manage_shop_coupon_terms" => true,
+                "edit_shop_coupon_terms" => true,
+                "delete_shop_coupon_terms" => true,
+                "assign_shop_coupon_terms" => true,
+            
                 'wpml_manage_translation_management' => true,
 
         ]
@@ -159,7 +159,7 @@ register_deactivation_hook(__FILE__, 'mmedia_uninstall');
 function mmedia_uninstall()
 {
     $wp_roles = new WP_Roles(); // create new role object
-$wp_roles->remove_role('mmedia_customer');
+    $wp_roles->remove_role('mmedia_customer');
 }
 
 add_action('admin_menu', 'mmedia_create_menu');
@@ -181,15 +181,15 @@ function remove_pages_from_menu()
 
     if (current_user_can('mmedia_customer')) {
         remove_menu_page('jetpack');                    //Jetpack*
-		remove_menu_page('themes.php');                 //Appearance
-		remove_menu_page('plugins.php');                //Plugins
-		remove_menu_page('options-general.php');        //Settings
-		remove_menu_page('profile.php');        //Settings
-		remove_menu_page('tools.php');        //Settings
-		remove_submenu_page( 'woocommerce', 'wc-settings' ); //WOO
-		remove_submenu_page( 'woocommerce', 'wc-addons' ); //WOO
-		remove_submenu_page( 'woocommerce', 'wc-status' ); //WOO
-	}
+        remove_menu_page('themes.php');                 //Appearance
+        remove_menu_page('plugins.php');                //Plugins
+        remove_menu_page('options-general.php');        //Settings
+        remove_menu_page('profile.php');        //Settings
+        remove_menu_page('tools.php');        //Settings
+        remove_submenu_page('woocommerce', 'wc-settings'); //WOO
+        remove_submenu_page('woocommerce', 'wc-addons'); //WOO
+        remove_submenu_page('woocommerce', 'wc-status'); //WOO
+    }
 }
 
 
