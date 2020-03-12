@@ -109,7 +109,6 @@ function mmedia_create_menu()
         plugins_url('images/m.svg', __FILE__));
     //call register settings function
     add_action('admin_init', 'mmedia_register_settings');
- 
 }
 
 function remove_pages_from_menu()
@@ -284,7 +283,7 @@ function mmedia_remove_all_dashboard_metaboxes()
 
 function wpb_mmedia_new_menu()
 {
-    register_nav_menu('m-media-menu', __('M Media Menu'));        
+    register_nav_menu('m-media-menu', __('M Media Menu'));
 
     if (current_user_can('mmedia_customer')) {
         add_action('wp_dashboard_setup', 'mmedia_remove_all_dashboard_metaboxes');
