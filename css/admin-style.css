@@ -4,6 +4,12 @@
 	color: #fff;
 }
 
+.button.button-mmedia-primary {
+	background: #246eb9;
+	border-color:#246eb9;
+	color: #fff;
+}
+
 .align-center-mmedia {
 	text-align: center;
 }
