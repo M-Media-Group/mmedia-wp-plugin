@@ -4,7 +4,7 @@ Plugin Name: M Media
 Plugin URI: https://mmediagroup.fr/
 Description: Required M Media plugin.
 Author: M Media
-Version: 1.5.1
+Version: 1.5.2
 Author URI: https://profiles.wordpress.org/mmediagroup/
 License: GPL2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -25,7 +25,7 @@ along with {Plugin Name}. If not, see {License URI}.
  */
 
 if (!defined('MMEDIA_VER')) {
-    define('MMEDIA_VER', '1.5.1');
+    define('MMEDIA_VER', '1.5.2');
 }
 
 // Start up the engine
@@ -216,7 +216,7 @@ class M_Media
 
     public function textdomain()
     {
-        load_plugin_textdomain('mmedia', false, dirname(plugin_basename(__FILE__)) . '/languages/');
+        //load_plugin_textdomain('mmedia', false, dirname(plugin_basename(__FILE__)) . '/languages/');
 
         // Check for new updates
         if (!class_exists('Smashing_Updater')) {
@@ -327,15 +327,6 @@ class M_Media
             remove_meta_box('dashboard_activity', 'dashboard', 'normal');
             remove_meta_box('jetpack_summary_widget', 'dashboard', 'normal');
 
-            // Remove Welcome panel
-            remove_action('welcome_panel', 'wp_welcome_panel');
-            // Remove the rest of the dashboard widgets
-            remove_meta_box('dashboard_primary', 'dashboard', 'side');
-            remove_meta_box('dashboard_quick_press', 'dashboard', 'side');
-            remove_meta_box('health_check_status', 'dashboard', 'normal');
-            remove_meta_box('dashboard_right_now', 'dashboard', 'normal');
-            remove_meta_box('dashboard_activity', 'dashboard', 'normal');
-            remove_meta_box('jetpack_summary_widget', 'dashboard', 'normal');
         }
     }
 
