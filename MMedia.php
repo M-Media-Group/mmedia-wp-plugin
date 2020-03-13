@@ -326,7 +326,6 @@ class M_Media
             remove_meta_box('dashboard_right_now', 'dashboard', 'normal');
             remove_meta_box('dashboard_activity', 'dashboard', 'normal');
             remove_meta_box('jetpack_summary_widget', 'dashboard', 'normal');
-
         }
     }
 
