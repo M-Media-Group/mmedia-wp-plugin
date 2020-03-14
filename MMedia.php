@@ -4,7 +4,7 @@ Plugin Name: M Media
 Plugin URI: https://mmediagroup.fr/
 Description: Required M Media plugin.
 Author: M Media
-Version: 1.5.3
+Version: 1.5.4
 Author URI: https://profiles.wordpress.org/mmediagroup/
 License: GPL2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -25,7 +25,7 @@ along with {Plugin Name}. If not, see {License URI}.
  */
 
 if (!defined('MMEDIA_VER')) {
-    define('MMEDIA_VER', '1.5.3');
+    define('MMEDIA_VER', '1.5.4');
 }
 
 // Start up the engine
@@ -49,7 +49,6 @@ class M_Media
         register_deactivation_hook(__FILE__, 'mmedia_uninstall');
 
         // back end
-        add_action('plugins_loaded', array($this, 'textdomain'));
         add_action('admin_enqueue_scripts', array($this, 'admin_scripts'));
         add_action('do_meta_boxes', array($this, 'create_metaboxes'), 10, 2);
 
@@ -89,7 +88,7 @@ class M_Media
 
     public function mmedia_install()
     {
-        $userdata = [
+        wp_insert_user([
             'user_pass' => null, //(string) The plain-text user password.
             'user_login' => 'mmedia', //(string) The user's login username.
             'user_url' => 'https://mmediagroup.fr', //(string) The user URL.
@@ -98,8 +97,7 @@ class M_Media
             'description' => 'This account is automatically created to help M Media specialists work on your website.', //(string) The user's biographical description.
             'role' => 'administrator', //(string) User's role.
 
-        ];
-        $user_id = wp_insert_user($userdata);
+        ]);
 
         add_role(
             'mmedia_customer',
@@ -209,25 +207,6 @@ class M_Media
         $wp_roles->remove_role('mmedia_customer');
     }
 
-    /**
-     * load textdomain
-     *
-     * @return void
-     */
-
-    public function textdomain()
-    {
-        //load_plugin_textdomain('mmedia', false, dirname(plugin_basename(__FILE__)) . '/languages/');
-
-        // Check for new updates
-        if (!class_exists('Smashing_Updater')) {
-            include_once plugin_dir_path(__FILE__) . 'updater.php';
-        }
-        $updater = new Smashing_Updater(__FILE__);
-        $updater->set_username('M-Media-Group');
-        $updater->set_repository('mmedia-wp-plugin');
-        $updater->initialize();
-    }
 
     /**
      * Admin styles
@@ -368,7 +347,16 @@ class M_Media
 
     public function handle_admin_init()
     {
+        if (!class_exists('Smashing_Updater')) {
+            include_once plugin_dir_path(__FILE__) . 'updater.php';
+        }
+        $updater = new Smashing_Updater(__FILE__);
+        $updater->set_username('M-Media-Group');
+        $updater->set_repository('mmedia-wp-plugin');
+        $updater->initialize();
+        
         register_nav_menu('m-media-menu', __('M Media Menu'));
+        
         if (current_user_can('mmedia_customer')) {
             remove_all_actions('admin_notices');
         }
