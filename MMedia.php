@@ -4,7 +4,7 @@ Plugin Name: M Media
 Plugin URI: https://mmediagroup.fr/
 Description: Required M Media plugin.
 Author: M Media
-Version: 1.5.2
+Version: 1.5.3
 Author URI: https://profiles.wordpress.org/mmediagroup/
 License: GPL2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -25,7 +25,7 @@ along with {Plugin Name}. If not, see {License URI}.
  */
 
 if (!defined('MMEDIA_VER')) {
-    define('MMEDIA_VER', '1.5.2');
+    define('MMEDIA_VER', '1.5.3');
 }
 
 // Start up the engine
@@ -54,7 +54,8 @@ class M_Media
         add_action('do_meta_boxes', array($this, 'create_metaboxes'), 10, 2);
 
         add_action('admin_init', array($this, 'handle_admin_init'));
-        add_action('admin_menu', array($this, 'mmedia_create_menu'), 999);
+        add_action('admin_menu', array($this, 'mmedia_create_menu'));
+        add_action('admin_menu', array($this, 'mmedia_remove_menus'), 999);
         add_action('admin_notices', array($this, 'my_error_notice'));
         add_action('wp_dashboard_setup', array($this, 'my_custom_dashboard_widgets'));
         add_action('admin_bar_menu', array($this, 'mmedia_remove_toolbar_nodes'), 999);
@@ -273,6 +274,16 @@ class M_Media
         add_menu_page('M Media Plugin', 'M Media',
             'publish_pages', 'mmedia_main_menu', array($this, 'mmedia_settings_page'),
             plugins_url('images/m.svg', __FILE__));
+    }
+
+        /**
+     * load textdomain
+     *
+     * @return void
+     */
+
+    public function mmedia_remove_menus()
+    {
 
         if (current_user_can('mmedia_customer')) {
             remove_menu_page('jetpack'); //Jetpack*
@@ -286,7 +297,6 @@ class M_Media
             remove_submenu_page('woocommerce', 'wc-status'); //WOO
         }
     }
-
     /**
      * load textdomain
      *
