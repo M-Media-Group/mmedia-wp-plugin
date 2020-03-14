@@ -276,7 +276,7 @@ class M_Media
             plugins_url('images/m.svg', __FILE__));
     }
 
-        /**
+    /**
      * load textdomain
      *
      * @return void
@@ -284,7 +284,6 @@ class M_Media
 
     public function mmedia_remove_menus()
     {
-
         if (current_user_can('mmedia_customer')) {
             remove_menu_page('jetpack'); //Jetpack*
             remove_menu_page('themes.php'); //Appearance
