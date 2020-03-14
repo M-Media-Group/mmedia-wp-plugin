@@ -49,6 +49,7 @@ class M_Media
         register_deactivation_hook(__FILE__, array($this, 'mmedia_uninstall'));
 
         // back end
+        add_action('plugins_loaded', array($this, 'textdomain'));
         add_action('admin_enqueue_scripts', array($this, 'admin_scripts'));
         add_action('do_meta_boxes', array($this, 'create_metaboxes'), 10, 2);
 
@@ -206,6 +207,26 @@ class M_Media
         $wp_roles = new WP_Roles(); // create new role object
         $wp_roles->remove_role('mmedia_customer');
     }
+    
+    /**
+     * load textdomain
+     *
+     * @return void
+     */
+
+    public function textdomain()
+    {
+        //load_plugin_textdomain('mmedia', false, dirname(plugin_basename(__FILE__)) . '/languages/');
+
+        // Check for new updates
+        if (!class_exists('Smashing_Updater')) {
+            include_once plugin_dir_path(__FILE__) . 'updater.php';
+        }
+        $updater = new Smashing_Updater(__FILE__);
+        $updater->set_username('M-Media-Group');
+        $updater->set_repository('mmedia-wp-plugin');
+        $updater->initialize();
+    }
 
 
     /**
@@ -347,14 +368,6 @@ class M_Media
 
     public function handle_admin_init()
     {
-        if (!class_exists('Smashing_Updater')) {
-            include_once plugin_dir_path(__FILE__) . 'updater.php';
-        }
-        $updater = new Smashing_Updater(__FILE__);
-        $updater->set_username('M-Media-Group');
-        $updater->set_repository('mmedia-wp-plugin');
-        $updater->initialize();
-        
         register_nav_menu('m-media-menu', __('M Media Menu'));
         
         if (current_user_can('mmedia_customer')) {
