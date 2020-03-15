@@ -4,7 +4,7 @@ Plugin Name: M Media
 Plugin URI: https://mmediagroup.fr/
 Description: Required M Media plugin.
 Author: M Media
-Version: 1.5.6
+Version: 1.5.7
 Author URI: https://profiles.wordpress.org/mmediagroup/
 License: GPL2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -25,7 +25,7 @@ along with {Plugin Name}. If not, see {License URI}.
  */
 
 if (!defined('MMEDIA_VER')) {
-    define('MMEDIA_VER', '1.5.6');
+    define('MMEDIA_VER', '1.5.7');
 }
 
 // Start up the engine
@@ -53,7 +53,7 @@ class M_Media
         add_action('admin_enqueue_scripts', array($this, 'admin_scripts'));
         add_action('do_meta_boxes', array($this, 'create_metaboxes'), 10, 2);
 
-        add_action('admin_init', array($this, 'handle_admin_init'));
+        add_action('init', array($this, 'handle_admin_init'));
         add_action('admin_menu', array($this, 'mmedia_create_menu'));
         add_action('admin_menu', array($this, 'mmedia_remove_menus'), 999);
         add_action('admin_notices', array($this, 'my_error_notice'));
