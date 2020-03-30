@@ -22,7 +22,7 @@ class Smashing_Updater
     {
         $this->file = $file;
 
-        add_action('admin_init', [$this, 'set_plugin_properties']);
+        add_action('admin_init', [$this, 'set_plugin_properties'], 999);
 
         return $this;
     }
