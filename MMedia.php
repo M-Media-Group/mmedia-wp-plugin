@@ -61,10 +61,10 @@ class M_Media
         add_action('admin_bar_menu', array($this, 'mmedia_remove_toolbar_nodes'), 999);
         add_filter('upload_mimes', array($this, 'm_mime_types'), 1, 1);
         add_filter('admin_footer_text', array($this, 'remove_footer_admin'));
-        add_filter( 'allow_minor_auto_core_updates', '__return_true' );
-        add_filter( 'allow_major_auto_core_updates', '__return_true' );
-        add_filter( 'auto_update_plugin', '__return_true' );
-        add_filter( 'auto_update_theme', '__return_true' );
+        add_filter('allow_minor_auto_core_updates', '__return_true');
+        add_filter('allow_major_auto_core_updates', '__return_true');
+        add_filter('auto_update_plugin', '__return_true');
+        add_filter('auto_update_theme', '__return_true');
 
         // front end
         remove_action('welcome_panel', 'wp_welcome_panel');
