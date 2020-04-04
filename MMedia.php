@@ -4,7 +4,7 @@ Plugin Name: M Media
 Plugin URI: https://mmediagroup.fr/
 Description: Required M Media plugin.
 Author: M Media
-Version: 1.5.9
+Version: 1.6.0
 Author URI: https://profiles.wordpress.org/mmediagroup/
 License: GPL2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -25,7 +25,7 @@ along with {Plugin Name}. If not, see {License URI}.
  */
 
 if (!defined('MMEDIA_VER')) {
-    define('MMEDIA_VER', '1.5.9');
+    define('MMEDIA_VER', '1.6.0');
 }
 
 // Start up the engine
@@ -61,6 +61,10 @@ class M_Media
         add_action('admin_bar_menu', array($this, 'mmedia_remove_toolbar_nodes'), 999);
         add_filter('upload_mimes', array($this, 'm_mime_types'), 1, 1);
         add_filter('admin_footer_text', array($this, 'remove_footer_admin'));
+        add_filter( 'allow_minor_auto_core_updates', '__return_true' );
+        add_filter( 'allow_major_auto_core_updates', '__return_true' );
+        add_filter( 'auto_update_plugin', '__return_true' );
+        add_filter( 'auto_update_theme', '__return_true' );
 
         // front end
         remove_action('welcome_panel', 'wp_welcome_panel');
