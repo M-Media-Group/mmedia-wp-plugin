@@ -274,9 +274,14 @@ class M_Media
     public function mmedia_create_menu()
     {
         //create new top-level menu
-        add_menu_page('M Media Plugin', 'M Media',
-            'publish_pages', 'mmedia_main_menu', array($this, 'mmedia_settings_page'),
-            plugins_url('images/m.svg', __FILE__));
+        add_menu_page(
+            'M Media Plugin',
+            'M Media',
+            'publish_pages',
+            'mmedia_main_menu',
+            array($this, 'mmedia_settings_page'),
+            plugins_url('images/m.svg', __FILE__)
+        );
     }
 
     /**
