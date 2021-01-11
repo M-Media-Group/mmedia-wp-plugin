@@ -1,4 +1,4 @@
-.button.button-mmedia {
+a.button.button-mmedia, .button.button-mmedia {
     background: #eb4647;
     border-color: #eb4647;
     color: #fff;
@@ -15,4 +15,9 @@
 }
 .card {
     margin: 20px auto;
+}
+
+/* Hide the Edit Image button from users to avoid confusion since they cant resize/edit M Media images from WordPress */
+.attachment-actions > .button.edit-attachment, .attachment-info > .details > .edit-attachment {
+	display: none;
 }
