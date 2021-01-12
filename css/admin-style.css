@@ -18,6 +18,6 @@ a.button.button-mmedia, .button.button-mmedia {
 }
 
 /* Hide the Edit Image button from users to avoid confusion since they cant resize/edit M Media images from WordPress */
-.attachment-actions > .button.edit-attachment, .attachment-info > .details > .edit-attachment {
+.attachment-actions > .button.edit-attachment, .attachment-info > .details > .edit-attachment, body.post-type-attachment .wp_attachment_image .button {
 	display: none;
 }
