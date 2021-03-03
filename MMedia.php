@@ -4,7 +4,7 @@ Plugin Name: M Media
 Plugin URI: https://mmediagroup.fr/
 Description: Required M Media plugin.
 Author: M Media
-Version: 1.7.3
+Version: 1.7.4
 Author URI: https://profiles.wordpress.org/mmediagroup/
 License: GPL2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -500,7 +500,7 @@ foreach ($body as $val) {
 
         $options = get_option('wposso_options');
 
-        if (!$options['server_url']) {
+        if (!$options || !$options['server_url']) {
             return $url;
         }
 
