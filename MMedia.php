@@ -500,7 +500,7 @@ foreach ($body as $val) {
 
         $options = get_option('wposso_options');
 
-        if (!$options || !$options['server_url']) {
+        if (!$options || (is_array($options) && !$options['server_url'])) {
             return $url;
         }
 
